@@ -83,6 +83,11 @@ public class NetconfSession {
         StringBuilder rpcReply = new StringBuilder();
         while (true) {
             String line = bufferReader.readLine();
+            if(line.endsWith("]]>]]>")){
+                line = line.replace("]]>]]>", "");
+                rpcReply.append(line).append("\n");
+                break;
+            }
             if (line == null || line.equals("]]>]]>"))
                 break;
             rpcReply.append(line).append("\n");

@@ -53,7 +53,8 @@ public class Device {
     private int timeout;
     private DocumentBuilder builder;
     private NetconfSession defaultSession;
-    
+    private String promptString;
+
     /**
      * Prepares a new <code>Device</code> object, with default client
      * capabilities and default port 830, which can then be used to perform 
@@ -462,7 +463,7 @@ public class Device {
             } catch ( Exception e) {
                 throw new NetconfException(e.getMessage());
             }
-            if (line == null || line.equals(""))
+            if (line == null || line.equals(promptString))
 	        break;
 	    reply += line + "\n";
         }
@@ -1063,6 +1064,12 @@ public class Device {
     public String getLastRPCReply() {
         return this.defaultSession.getLastRPCReply();
     }
-    
+
+    public void setPromptString(String promptString){
+        this.promptString = promptString;
+    }
+    public String getPromptString(String promptString){
+        return promptString;
+    }
 }
 

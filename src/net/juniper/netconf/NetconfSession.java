@@ -280,7 +280,7 @@ public class NetconfSession {
             throw new IllegalArgumentException("Null RPC");
         }
         rpcContent = rpcContent.trim();
-        if (!rpcContent.startsWith("<rpc>") && !rpcContent.equals("<rpc/>")) {
+        if (!rpcContent.startsWith("<rpc") && !rpcContent.equals("<rpc/>")) {
             if (rpcContent.startsWith("<"))
                 rpcContent = "<rpc>" + rpcContent + "</rpc>"; 
             else

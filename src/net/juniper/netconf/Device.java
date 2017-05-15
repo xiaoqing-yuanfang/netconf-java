@@ -463,7 +463,7 @@ public class Device {
             } catch ( Exception e) {
                 throw new NetconfException(e.getMessage());
             }
-            if (line == null || line.equals(promptString))
+            if (line == null || line.equals("") || line.equals(promptString))
 	        break;
 	    reply += line + "\n";
         }
